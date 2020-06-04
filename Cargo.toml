@@ -1,0 +1,27 @@
+[package]
+name = "blocking-service"
+version = "0.1.0"
+authors = ["albert"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# Uuid support
+uuid = "0.8.1"
+
+# Apache Cassandra connector
+# cdrs = "2.2.3"
+cdrs = { version = "2.2.4", features = ["ssl"] }
+cdrs_helpers_derive = "0.3.0"
+openssl = "0.10"
+openssl-sys = "0.9"
+
+# gRPC
+tonic = "0.1.0-beta.1"
+bytes = "0.4"
+prost = "0.5"
+tokio = { version = "0.2", features = ["macros"] }
+
+[build-dependencies]
+tonic-build = "0.1.0-beta.1"

@@ -1,0 +1,24 @@
+syntax = "proto3";
+package reporting_service;
+
+// Options
+option java_multiple_files = true;
+option java_package = "com.tangerinappp.reporting.service";
+option java_outer_classname = "ReportServiceProto";
+
+service ReportingService {
+    rpc ReportUser(ReportUserRequest) returns (ReportUserResponse);
+}
+
+message ReportUserRequest {
+    string user_id = 1;
+    string reported_user_id = 2;
+    string reported_promo_id = 3;
+    string reason = 4;
+}
+
+message ReportUserResponse {
+   bool acknowledge = 1;
+   string  response = 2;    		
+}
+

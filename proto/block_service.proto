@@ -1,0 +1,48 @@
+syntax = "proto3";
+package blocking_service;
+
+// Options
+option java_multiple_files = true;
+option java_package = "com.tangerinappp.blocking.service";
+option java_outer_classname = "BlockServiceProto";
+
+service BlockingService {
+    rpc BlockUser(BlockUserInfo) returns (BlockUserResponse);
+    rpc UnblockUser(UnblockUserInfo) returns (UnblockUserResponse);
+    rpc AreThisUsersBlocked(AreThisUsersBlockedRequest) returns (AreThisUsersBlockedResponse);
+}
+
+message BlockUserInfo {
+    string user_id = 1;
+    string blocked_user_id = 2;
+    string reason = 3; 
+}
+
+message BlockUserResponse {
+   bool acknowledge = 1;
+   string  response = 2;    		
+}
+
+message UnblockUserInfo {
+    string user_id = 1;
+    string blocked_user_id = 2;
+}
+
+message UnblockUserResponse {
+    bool acknowledge = 1;
+    string  response = 2;    		
+ }
+
+message AreThisUsersBlockedRequest {
+    string user_id =1;
+    repeated string blocked_user_id = 2;
+}
+
+message AreThisUsersBlockedResponse {
+    repeated BlockedUsersType blocked_users = 1;
+}
+
+message BlockedUsersType {
+    string blocked_user_id =1;
+    bool is_blocked = 2;
+}
